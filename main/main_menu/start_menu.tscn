@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://deaqmroxxipkp"]
+
+[ext_resource type="Script" path="res://main/main_menu/start_menu.gd" id="1_1gk14"]
+
+[node name="start_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1gk14")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="container-main_menu" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -102.0
+offset_right = 124.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="g1" type="Button" parent="container-main_menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="g2" type="Button" parent="container-main_menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="g3" type="Button" parent="container-main_menu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="delete_menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="d1" type="Button" parent="delete_menu"]
+layout_mode = 2
+offset_left = 706.0
+offset_top = 245.0
+offset_right = 733.0
+offset_bottom = 295.0
+theme_override_font_sizes/font_size = 30
+
+[node name="d2" type="Button" parent="delete_menu"]
+layout_mode = 2
+offset_left = 706.0
+offset_top = 299.0
+offset_right = 733.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 30
+
+[node name="d3" type="Button" parent="delete_menu"]
+layout_mode = 2
+offset_left = 706.0
+offset_top = 353.0
+offset_right = 733.0
+offset_bottom = 403.0
+theme_override_font_sizes/font_size = 30
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 53.0
+
+[connection signal="pressed" from="container-main_menu/g1" to="." method="_on_g_1_pressed"]
+[connection signal="pressed" from="container-main_menu/g2" to="." method="_on_g_2_pressed"]
+[connection signal="pressed" from="container-main_menu/g3" to="." method="_on_g_3_pressed"]
+[connection signal="pressed" from="delete_menu/d1" to="." method="_on_d_1_pressed"]
+[connection signal="pressed" from="delete_menu/d2" to="." method="_on_d_2_pressed"]
+[connection signal="pressed" from="delete_menu/d3" to="." method="_on_d_3_pressed"]
