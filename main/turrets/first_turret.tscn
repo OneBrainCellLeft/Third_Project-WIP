@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://b70dt0n1h3k1q"]
+
+[ext_resource type="Script" path="res://main/turrets/first_turret.gd" id="1_us17y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ojxpl"]
+radius = 127.016
+
+[sub_resource type="PrismMesh" id="PrismMesh_bb3f6"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mp2qr"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_adw5w"]
+
+[node name="first_turret" type="Node2D"]
+script = ExtResource("1_us17y")
+
+[node name="detection_area" type="Area2D" parent="."]
+
+[node name="area_shape" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_ojxpl")
+
+[node name="turret_visual" type="Node2D" parent="."]
+
+[node name="turret_head" type="MeshInstance2D" parent="turret_visual"]
+modulate = Color(0.207843, 0.203922, 0.192157, 1)
+position = Vector2(0, -46)
+scale = Vector2(16, -17.7129)
+mesh = SubResource("PrismMesh_bb3f6")
+
+[node name="pos" type="Node2D" parent="turret_visual/turret_head"]
+
+[node name="Marker2D" type="Marker2D" parent="turret_visual/turret_head/pos"]
+position = Vector2(0.8125, 0)
+
+[node name="turret_body" type="MeshInstance2D" parent="turret_visual"]
+modulate = Color(0.54902, 0.54902, 0.54902, 1)
+position = Vector2(-0.0134926, -6.75)
+scale = Vector2(30.0001, 44.5)
+mesh = SubResource("QuadMesh_mp2qr")
+
+[node name="turret_base" type="MeshInstance2D" parent="turret_visual"]
+modulate = Color(0.352941, 0.321569, 0.113725, 1)
+position = Vector2(-0.351162, 17.4115)
+rotation = 3.14159
+scale = Vector2(39.2977, -6.74627)
+mesh = SubResource("QuadMesh_adw5w")
+
+[node name="shooting_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="detection_area" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="detection_area" to="." method="_on_detection_area_area_exited"]
+[connection signal="timeout" from="shooting_timer" to="." method="_on_shooting_timer_timeout"]

@@ -7,8 +7,12 @@ var s2 = false
 var s3 = false
 var SAVE_PATH
 
+###
+
 func _process(_delta):
 	Save_Check()
+
+###
 
 func Save_Game():
 	saveium += 1
@@ -19,6 +23,8 @@ func Save_Game():
 	var jstr = JSON.stringify(data)
 	save_file.store_line(jstr)
 
+###
+
 func Load_Game():
 	var save_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if FileAccess.file_exists(SAVE_PATH):
@@ -27,8 +33,12 @@ func Load_Game():
 			if current_line:
 				saveium = current_line["Saveium"]
 
+###
+
 func Delete_Game():
 	DirAccess.remove_absolute(SAVE_PATH)
+
+###
 
 func Save_Check():
 	if FileAccess.file_exists("res://main/saves/save1.save"):

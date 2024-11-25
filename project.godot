@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Utils="*res://main/global/utils.gd"
 
+[display]
+
+window/size/initial_position_type=0
+window/stretch/mode="canvas_items"
+
 [rendering]
 
 renderer/rendering_method="mobile"

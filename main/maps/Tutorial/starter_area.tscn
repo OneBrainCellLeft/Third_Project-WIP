@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://tydtuudl4jkh"]
+
+[ext_resource type="Script" path="res://main/maps/Tutorial/spawner.gd" id="2_55rh5"]
+[ext_resource type="PackedScene" uid="uid://b70dt0n1h3k1q" path="res://main/turrets/first_turret.tscn" id="2_521i8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_omkm5"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bybqe"]
+
+[node name="starter_area" type="Node2D"]
+
+[node name="terrain" type="Node2D" parent="."]
+
+[node name="grass" type="MeshInstance2D" parent="terrain"]
+modulate = Color(0, 0.239216, 0.0431373, 1)
+position = Vector2(576.5, 324.5)
+scale = Vector2(1163, 659)
+mesh = SubResource("QuadMesh_omkm5")
+
+[node name="path1" type="MeshInstance2D" parent="terrain"]
+modulate = Color(0.34902, 0.2, 0.00784314, 1)
+position = Vector2(135, 75.5)
+scale = Vector2(270, 37)
+mesh = SubResource("QuadMesh_bybqe")
+
+[node name="path2" type="MeshInstance2D" parent="terrain"]
+modulate = Color(0.34902, 0.2, 0.00784314, 1)
+position = Vector2(247.25, 229.75)
+scale = Vector2(45.5, 272.5)
+mesh = SubResource("QuadMesh_bybqe")
+
+[node name="path3" type="MeshInstance2D" parent="terrain"]
+modulate = Color(0.34902, 0.2, 0.00784314, 1)
+position = Vector2(481.75, 345.5)
+scale = Vector2(514.5, 41)
+mesh = SubResource("QuadMesh_bybqe")
+
+[node name="path4" type="MeshInstance2D" parent="terrain"]
+modulate = Color(0.34902, 0.2, 0.00784314, 1)
+position = Vector2(715.5, 442.5)
+scale = Vector2(47, 235)
+mesh = SubResource("QuadMesh_bybqe")
+
+[node name="path5" type="MeshInstance2D" parent="terrain"]
+modulate = Color(0.34902, 0.2, 0.00784314, 1)
+position = Vector2(925, 539.5)
+scale = Vector2(456, 41)
+mesh = SubResource("QuadMesh_bybqe")
+
+[node name="spawner" type="Node2D" parent="."]
+script = ExtResource("2_55rh5")
+
+[node name="spawn_timer" type="Timer" parent="spawner"]
+wait_time = 2.0
+autostart = true
+
+[node name="first_turret" parent="." instance=ExtResource("2_521i8")]
+position = Vector2(308, 291)
+
+[connection signal="timeout" from="spawner/spawn_timer" to="spawner" method="_on_spawn_timer_timeout"]

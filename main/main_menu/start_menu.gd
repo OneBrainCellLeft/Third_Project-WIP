@@ -26,35 +26,49 @@ func _process(_delta):
 		$"delete_menu/d3".visible = false
 	$Label.text = str(Utils.saveium)
 
+###
+
 func _on_g_1_pressed():
 	Utils.SAVE_PATH = "res://main/saves/save1.save"
 	if Utils.s1 == true:
 		Utils.Load_Game()
 	elif Utils.s1 == false:
-		Utils.Save_Game()
+		get_tree().change_scene_to_file("res://main/maps/Tutorial/starter_area.tscn")
 
 func _on_g_2_pressed():
 	Utils.SAVE_PATH = "res://main/saves/save2.save"
 	if Utils.s2 == true:
 		Utils.Load_Game()
 	elif Utils.s2 == false:
-		Utils.Save_Game()
+		get_tree().change_scene_to_file("res://main/maps/Tutorial/starter_area.tscn")
 
 func _on_g_3_pressed():
 	Utils.SAVE_PATH = "res://main/saves/save3.save"
 	if Utils.s3 == true:
 		Utils.Load_Game()
 	elif Utils.s3 == false:
-		Utils.Save_Game()
+		get_tree().change_scene_to_file("res://main/maps/Tutorial/starter_area.tscn")
+
+###
 
 func _on_d_1_pressed():
 	Utils.SAVE_PATH = "res://main/saves/save1.save"
-	Utils.Delete_Game()
+	$delete_confirm.visible = true
 
 func _on_d_2_pressed():
 	Utils.SAVE_PATH = "res://main/saves/save2.save"
-	Utils.Delete_Game()
+	$delete_confirm.visible = true
 
 func _on_d_3_pressed():
 	Utils.SAVE_PATH = "res://main/saves/save3.save"
+	$delete_confirm.visible = true
+
+###
+
+func _on_yes_pressed():
 	Utils.Delete_Game()
+	$delete_confirm.visible = false
+
+
+func _on_no_pressed():
+	$delete_confirm.visible = false
