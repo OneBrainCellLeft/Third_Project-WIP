@@ -71,12 +71,6 @@ offset_right = 733.0
 offset_bottom = 403.0
 theme_override_font_sizes/font_size = 30
 
-[node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 184.0
-offset_bottom = 53.0
-
 [node name="delete_confirm" type="CanvasLayer" parent="."]
 visible = false
 

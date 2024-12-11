@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://tydtuudl4jkh"]
 
+[ext_resource type="PackedScene" uid="uid://bh0kq4hi2g385" path="res://main/global/turret_spawner.tscn" id="2_1rvbm"]
 [ext_resource type="Script" path="res://main/maps/Tutorial/spawner.gd" id="2_55rh5"]
-[ext_resource type="PackedScene" uid="uid://b70dt0n1h3k1q" path="res://main/turrets/first_turret.tscn" id="2_521i8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_omkm5"]
 
@@ -52,9 +52,40 @@ script = ExtResource("2_55rh5")
 
 [node name="spawn_timer" type="Timer" parent="spawner"]
 wait_time = 2.0
-autostart = true
 
-[node name="first_turret" parent="." instance=ExtResource("2_521i8")]
-position = Vector2(308, 291)
+[node name="hud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="start_button" type="Button" parent="hud"]
+layout_mode = 0
+offset_left = 1010.0
+offset_top = 582.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_font_sizes/font_size = 20
+text = "Start
+"
+
+[node name="$_count" type="Label" parent="hud"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 49.0
+offset_bottom = 31.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="turret_spawner" parent="." instance=ExtResource("2_1rvbm")]
+position = Vector2(308, 286)
+
+[node name="turret_spawner2" parent="." instance=ExtResource("2_1rvbm")]
+position = Vector2(187, 131)
+
+[node name="turret_spawner3" parent="." instance=ExtResource("2_1rvbm")]
+position = Vector2(652, 405)
 
 [connection signal="timeout" from="spawner/spawn_timer" to="spawner" method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="hud/start_button" to="spawner" method="_on_start_button_pressed"]

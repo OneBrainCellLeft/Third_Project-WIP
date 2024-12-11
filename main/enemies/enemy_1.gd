@@ -1,6 +1,6 @@
 extends Node2D
 
-var HP = 3
+var HP = 1
 
 
 func _process(_delta):
@@ -12,6 +12,7 @@ func _process(_delta):
 
 func death():
 	if HP <= 0:
+		Utils.coins += 1
 		queue_free()
 
 

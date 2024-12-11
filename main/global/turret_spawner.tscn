@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh0kq4hi2g385"]
+
+[ext_resource type="Script" path="res://main/global/turret_spawner.gd" id="1_4llul"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_iheh8"]
+
+[node name="turret_spawner" type="Node2D"]
+script = ExtResource("1_4llul")
+
+[node name="base" type="MeshInstance2D" parent="."]
+modulate = Color(0.180392, 0.180392, 0.180392, 1)
+scale = Vector2(68, 68)
+mesh = SubResource("QuadMesh_iheh8")
+
+[node name="stand" type="MeshInstance2D" parent="."]
+modulate = Color(0.384314, 0.384314, 0.384314, 1)
+scale = Vector2(44, 44)
+mesh = SubResource("QuadMesh_iheh8")
+
+[node name="shop_button" type="Button" parent="."]
+visibility_layer = 0
+offset_left = -22.0
+offset_top = -22.0
+offset_right = 22.0
+offset_bottom = 22.0
+
+[node name="ui_spawner" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="ui_spawner"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui_spawner/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -101.0
+offset_right = 101.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="first_turret" type="Button" parent="ui_spawner/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="second_turret" type="Button" parent="ui_spawner/Control/VBoxContainer"]
+layout_mode = 2
+keep_pressed_outside = true
+
+[node name="third_turret" type="Button" parent="ui_spawner/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="close" type="Button" parent="ui_spawner/Control/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="shop_button" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="ui_spawner/Control/VBoxContainer/first_turret" to="." method="_on_first_turret_pressed"]
+[connection signal="pressed" from="ui_spawner/Control/VBoxContainer/second_turret" to="." method="_on_second_turret_pressed"]
+[connection signal="pressed" from="ui_spawner/Control/VBoxContainer/third_turret" to="." method="_on_third_turret_pressed"]
+[connection signal="pressed" from="ui_spawner/Control/VBoxContainer/close" to="." method="_on_close_pressed"]

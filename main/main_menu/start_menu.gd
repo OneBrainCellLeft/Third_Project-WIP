@@ -24,7 +24,6 @@ func _process(_delta):
 	elif Utils.s3 == false:
 		$"container-main_menu/g3".text = "New Game"
 		$"delete_menu/d3".visible = false
-	$Label.text = str(Utils.saveium)
 
 ###
 
