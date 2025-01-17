@@ -69,7 +69,7 @@ theme_override_font_sizes/font_size = 20
 text = "Start
 "
 
-[node name="$_count" type="Label" parent="hud"]
+[node name="money_count" type="Label" parent="hud"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 8.0

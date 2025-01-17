@@ -61,4 +61,3 @@ func turret_check():
 		st.disabled = false
 		tt.text = "$30 - Third Turret"
 		tt.disabled = false
-

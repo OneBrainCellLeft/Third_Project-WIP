@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://x3qybkfc6a2q"]
+
+[ext_resource type="Script" path="res://main/enemies/enemy_2.gd" id="1_3vaje"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_l64gr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wjhjf"]
+radius = 13.0
+height = 32.0
+
+[node name="enemy_2" type="Node2D"]
+script = ExtResource("1_3vaje")
+
+[node name="enemy_visual" type="MeshInstance2D" parent="."]
+modulate = Color(2.38247e-06, 0.537833, 0.247107, 1)
+scale = Vector2(-20, 26.5)
+mesh = SubResource("QuadMesh_l64gr")
+
+[node name="colissions" type="Area2D" parent="." groups=["Enemies"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colissions"]
+shape = SubResource("CapsuleShape2D_wjhjf")
+
+[connection signal="body_entered" from="colissions" to="." method="_on_colissions_body_entered"]

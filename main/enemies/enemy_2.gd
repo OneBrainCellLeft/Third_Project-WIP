@@ -1,10 +1,10 @@
 extends Node2D
 
-var HP = 1
+var HP = 2
 
 
 func _process(_delta):
-	get_parent().set_progress(get_parent().get_progress() + 0.5)
+	get_parent().set_progress(get_parent().get_progress() + 0.7)
 	if get_parent().get_progress_ratio() == 1:
 		queue_free()
 	death()
@@ -12,7 +12,7 @@ func _process(_delta):
 
 func death():
 	if HP <= 0:
-		Utils.coins += 1
+		Utils.coins += 2
 		queue_free()
 
 
